@@ -1,0 +1,157 @@
+html {
+  box-sizing: border-box;
+  font-family: "Comfortaa",cursive;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  min-height: 100vh;
+  background: #43cea2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #43cea2 , #185a9d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #43cea2 , #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+h2 {
+  color: white;
+}
+
+
+
+nav {
+  position: relative;
+  perspective: 600px;
+}
+
+.text-center {
+  text-align: center;
+  margin: 2em 0 ;
+}
+
+.main-links > li > a {
+  color: #fbb7dc;
+  text-decoration: none;
+  font-size: 20px;
+  background: rgba(21, 6, 33, 0.3);
+  padding:10px 20px;
+  display: inline-block;
+  margin:20px;
+  border-radius:5px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.main-links > li {
+  position: relative;
+  display:flex;
+  justify-content: center;
+}
+
+.dropdown {
+  opacity: 0;
+  position: absolute;
+  overflow: hidden;
+  padding:20px;
+  top:-20px;
+  border-radius:2px;
+  /* transition = see trigger-enter and trigger-enter-active*/
+  transition: all 0.5s;
+  transform: translateY(100px);
+  will-change: transform;
+  display: none;
+}
+/* show the dropdown(transition) */
+.trigger-enter .dropdown {
+  display: block;
+}
+/* transition the dropdown (in 0.5s); from opacity 0 to opacity 1 */
+.trigger-enter-active .dropdown {
+  opacity: 1;
+}
+
+
+/* the white bg that follows up the dropdown*/
+.dropdownBackground {
+  /*width:100px;
+  height:100px;*/
+  position: absolute;
+  background: #BB377D;
+  border-radius: 4px;
+  box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
+  /* smooth transition from one dropdown size to another */
+  transition:all 0.3s, opacity 0.1s, translate 0.2s;
+  /*transform-origin: 50% 0%;*/
+
+  display: flex;
+  justify-content: center;
+  opacity:0;
+}
+/* show the white bg that follows up the dropdown*/
+.dropdownBackground.open {
+  opacity: 1;
+}
+
+.arrow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: #BB377D;
+  transform: translateY(-50%) rotate(45deg);
+}
+.image {
+  width: 100px;
+  /*height: 80px;*/
+  border-radius: 4px;
+}
+.bio {
+  min-width: 500px;
+  line-height: 1.5;
+  color: #fff;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio img {
+  margin-right: 20px;
+}
+
+.skills {
+  min-width: 300px;
+  color: #fff;
+}
+
+.skills li {
+  padding: 10px 0;
+  display: block;
+  border-bottom: 1px solid rgba(255,237,188,0.2);
+}
+/* style for links inside the dropdown*/
+.dropdown a {
+  text-decoration: none;
+  /*color: #ffc600;*/
+}
+
+a.button {
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  margin-bottom: 10px;
+  
+}
+
+
+/* Match Twitter , FreeCode Camp, github colors... */
+.button[href*=twitter] { background: #019FE9; }
+.button[href*=freecodecamp] { background: #006400; }
