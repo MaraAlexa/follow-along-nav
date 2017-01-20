@@ -13,12 +13,29 @@ body {
   background: linear-gradient(to left, #43cea2 , #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+/* the image on top of the site*/
+header {
+  text-align: center;
+  height: 50vh;
+  background: url("sunset.jpg") bottom center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h1.title {
+  color: white;
+  padding: 20px;
+  font-size: 6vw;
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
+}
+
 /* all the content after the navigation */
 .site-wrap {
   max-width: 900px;
   margin: 8vh auto;
   background: #fff;
-  padding: 30px;
+  padding: 40px;
   text-align: justify;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
   transform: scale(0.97);
@@ -31,47 +48,31 @@ body {
 
 .fixed-nav nav.top {
   position: fixed;
-  box-shadow: 0 4px rgba(0,0,0,0.1)
+  box-shadow: 0 3px rgba(83, 161, 172, 0.1)
 }
-/* the image on top of the site*/
-header {
-  text-align: center;
-  height: 50vh;
-  background: url("sunset.jpg") bottom center no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* finish extra style*/
-
-h2 {
-  color: white;
-  padding: 20px;
-  /* extra*/
-  font-size: 6vw;
-  text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
-}
-
-
-
 nav.top {
   position: relative;
   perspective: 600px;
   /* extra*/
   background: rgba(83, 161, 172, 0.9);
-  top:0;
+  top: 0;
   width: 100%;
-  transition:all 0.5s;
+  transition: all 0.5s;
   z-index: 1;
   margin-left: 0;
 }
-
-.text-center {
-  text-align: center;
-  margin: 2em 0 ;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
-
+.main-links > li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 .main-links > li > a {
   color: #fbb7dc;
   text-decoration: none;
@@ -85,21 +86,7 @@ nav.top {
   text-transform: uppercase;
   font-weight: 700;
 }
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.main-links > li {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
+/* hide the dropdown (everything that should dropdown when you hover the main link)*/
 .dropdown {
   opacity: 0;
   position: absolute;
@@ -113,7 +100,7 @@ nav ul {
   will-change: transform;
   display: none;
 }
-/* show the dropdown(transition) */
+/* show the dropdown(with transition) */
 .trigger-enter .dropdown {
   display: block;
 }
@@ -125,13 +112,11 @@ nav ul {
 
 /* the white bg that follows up the dropdown*/
 .dropdownBackground {
-  /*width:100px;
-  height:100px;*/
   position: absolute;
   background: #BB377D;
   border-radius: 4px;
   box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
-  /* smooth transition from one dropdown size to another */
+  /* smooth transition from one dropdown size to another: */
   transition:all 0.3s, opacity 0.1s, translate 0.2s;
   /*transform-origin: 50% 0%;*/
 
@@ -154,17 +139,12 @@ nav ul {
 }
 .image {
   width: 100px;
-  /*height: 80px;*/
   border-radius: 4px;
 }
 .bio {
   min-width: 500px;
   line-height: 1.5;
   color: #fff;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .bio img {
@@ -188,13 +168,14 @@ nav ul {
 }
 
 a.button {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px;
+  padding: 8px;
   color: white;
+  border-radius: 2px;
   margin-bottom: 10px;
-
+}
+a.button svg {
+  margin: 7px;
+  padding: 2px;
 }
 
 /* Match Twitter , FreeCode Camp, github colors... */
@@ -205,25 +186,34 @@ a.button {
 /* extra -LOGO style*/
 
 .logo {
-  max-width: 0;
+  max-width: 20px;
   overflow: hidden;
   background: rgba(83, 161, 172, 0.7);
   /* the transtion works only with max-with ( from 0 to 100px) instead of just width */
   transition: all .5s;
   /*font-size: 80px;*/
-  padding: 5px;
 
+
+  transform: scale(0.97);
+  transition: transform 0.7s;
+}
+.logo a {
+  text-decoration: none;
+  font-size: 18px;
+  /*padding: 5px;*/
+  transition: all .5s;
 }
 
 .fixed-nav .logo {
   /* transition logo from 0 to 100px*/
   max-width: 100px;
+  transform: scale(1);
 }
-
-.logo a {
-  text-decoration: none;
+.fixed-nav .logo a {
   font-size: 56px;
 }
+
+
 /* center pictures class:*/
 .align-center {
   display: flex;

@@ -1,17 +1,19 @@
 const triggers = document.querySelectorAll('.main-links > li'); // select all the list items
 const background = document.querySelector('.dropdownBackground'); // selecty the white dropdown bg
-const nav = document.querySelector('#main-nav'); // select the navigation
-const topOfNav = nav.offsetTop;
+const nav = document.querySelector('#main-nav'); // select the navigation to add the fixed-nav class
+const topOfNav = nav.offsetTop; // select the distance between the top and start of the nav
+
 
 function fixNav() {
-  if(window.scrollY >= topOfNav) {
-    // nav.offsetHeight gives a number however large it is
-    document.body.style.paddingTop = nav.offsetHeight + 'px'; // 2.add back the height of the nav
-    document.body.classList.add('fixed-nav'); // 1.has position fixed => takes no space in DOM anymore => kind of floating, takes no height
-  } else {
-    document.body.style.paddingTop = 0; // 2.remove the height of the nav on body
-    document.body.classList.remove('fixed-nav');
+  // console.log(topOfNav);
+  if(window.scrollY >= topOfNav) { // 1.when you scroll more than the distance between the top and the nav
+    // nav.offsetHeight is the height of the nav (84)
+    document.body.style.paddingTop = nav.offsetHeight + 'px'; // 3.add back the height of the nav
 
+    document.body.classList.add('fixed-nav'); // 2.has position fixed => takes no space in DOM anymore => kind of floating, takes no height
+  } else {
+    document.body.style.paddingTop = 0; // 3.remove the height of the nav on body
+    document.body.classList.remove('fixed-nav');
   }
 }
 
@@ -41,7 +43,6 @@ function handleEnter() {
     width: dropdownCoordinates.width,
     top: dropdownCoordinates.top - navCoordinates.top,
     left: dropdownCoordinates.left - navCoordinates.left
-
   };
 
   // make the white bg the same size with the dropdown
@@ -49,14 +50,13 @@ function handleEnter() {
   background.style.setProperty('height', `${coords.height}px`);
   // top and left coords: transform, translate(x,y)
   background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
-
 }
 
 function handleLeave() {
   this.classList.remove('trigger-enter', 'trigger-enter-active');
   background.classList.remove('open');
 }
-// for each nav link trigger listen for mouseenter
+// for each nav link trigger listen for mouseenter and mouse leave
 triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
 triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
 
